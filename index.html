@@ -4,6 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Amora Sucrée · Cardápio</title>
+<meta name="description" content="Amora Sucrée - Confeitaria artesanal. Bolos personalizados, docinhos e brigadeiros sob encomenda. Retirada no local.">
+<meta property="og:title" content="Amora Sucrée · Confeitaria Artesanal">
+<meta property="og:description" content="Bolos, doces e brigadeiros artesanais feitos sob encomenda.">
+<meta property="og:type" content="website">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Playball&family=Fredoka:wght@500;600;700&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
@@ -136,6 +140,93 @@
   }
   .info-card b{ color:var(--plum); }
 
+  /* ---------- galeria de fotos ---------- */
+  .gallery{
+    display:grid;
+    grid-template-columns:repeat(2, 1fr);
+    gap:12px;
+    margin-top:16px;
+  }
+  .gallery-item{
+    position:relative;
+    border-radius:16px;
+    overflow:hidden;
+    aspect-ratio:1/1;
+    cursor:pointer;
+    box-shadow:0 4px 12px rgba(59,31,56,0.12);
+    transition:transform .25s ease, box-shadow .25s ease;
+  }
+  .gallery-item:hover{
+    transform:translateY(-4px);
+    box-shadow:0 8px 20px rgba(59,31,56,0.2);
+  }
+  .gallery-item img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    transition:transform .4s ease;
+  }
+  .gallery-item:hover img{
+    transform:scale(1.08);
+  }
+  .gallery-item .gallery-caption{
+    position:absolute;
+    bottom:0;
+    left:0;
+    right:0;
+    padding:12px;
+    background:linear-gradient(transparent, rgba(59,31,56,0.85));
+    color:#fff;
+    font-size:12px;
+    font-weight:600;
+    opacity:0;
+    transition:opacity .3s ease;
+  }
+  .gallery-item:hover .gallery-caption{
+    opacity:1;
+  }
+
+  /* ---------- lightbox ---------- */
+  .lightbox{
+    position:fixed;
+    inset:0;
+    background:rgba(59,31,56,0.92);
+    display:none;
+    align-items:center;
+    justify-content:center;
+    z-index:100;
+    cursor:zoom-out;
+  }
+  .lightbox.show{
+    display:flex;
+  }
+  .lightbox img{
+    max-width:90%;
+    max-height:85vh;
+    border-radius:14px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.3);
+  }
+  .lightbox .lightbox-close{
+    position:absolute;
+    top:20px;
+    right:20px;
+    background:rgba(255,255,255,0.15);
+    color:#fff;
+    border:none;
+    width:40px;
+    height:40px;
+    border-radius:50%;
+    font-size:20px;
+    cursor:pointer;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    transition:background .2s;
+  }
+  .lightbox .lightbox-close:hover{
+    background:rgba(255,255,255,0.3);
+  }
+
   /* ---------- builder ---------- */
   .builder-intro{ font-size:14px; line-height:1.55; margin-bottom:18px; }
   .cat{
@@ -178,7 +269,7 @@
   .stepper button:active{ background:var(--rose); }
   .stepper .qty{ min-width:22px; text-align:center; font-weight:700; font-size:14px; color:var(--plum); }
 
-  select, input[type=text], textarea{
+  select, input[type=text], input[type=date], textarea{
     font-family:'Quicksand'; font-size:14px;
     border:1.5px solid var(--line); border-radius:10px;
     padding:9px 10px; background:#fff; color:var(--ink); width:100%;
@@ -257,6 +348,77 @@
     font-size:11.5px; background:#fff3d6; border:1px dashed #d8a93d; color:#7a5210;
     border-radius:10px; padding:8px 10px; margin:10px 22px 0;
   }
+
+  /* ---------- botão flutuante de WhatsApp ---------- */
+  .whatsapp-float{
+    position:fixed;
+    bottom:90px;
+    right:16px;
+    background:#25D366;
+    color:#fff;
+    width:52px;
+    height:52px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-decoration:none;
+    box-shadow:0 4px 14px rgba(37,211,102,0.4);
+    z-index:15;
+    transition:transform .2s ease, box-shadow .2s ease;
+  }
+  .whatsapp-float:hover{
+    transform:scale(1.08);
+    box-shadow:0 6px 18px rgba(37,211,102,0.55);
+  }
+  .whatsapp-float:active{
+    transform:scale(0.95);
+  }
+  .whatsapp-float svg{
+    width:28px;
+    height:28px;
+  }
+
+  /* ---------- redes sociais ---------- */
+  .social-links{
+    display:flex;
+    gap:12px;
+    justify-content:center;
+    margin-top:20px;
+    flex-wrap:wrap;
+  }
+  .social-btn{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    padding:10px 18px;
+    border-radius:999px;
+    text-decoration:none;
+    font-family:'Fredoka';
+    font-weight:600;
+    font-size:13.5px;
+    transition:transform .2s ease, box-shadow .2s ease;
+  }
+  .social-btn:hover{
+    transform:translateY(-3px);
+  }
+  .social-btn:active{
+    transform:scale(0.95);
+  }
+  .social-btn.instagram{
+    background:linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+    color:#fff;
+    box-shadow:0 4px 14px rgba(220,39,67,0.35);
+  }
+  .social-btn.whatsapp{
+    background:#25D366;
+    color:#fff;
+    box-shadow:0 4px 14px rgba(37,211,102,0.35);
+  }
+  .social-btn svg{
+    width:18px;
+    height:18px;
+  }
 </style>
 </head>
 <body>
@@ -272,9 +434,41 @@
     <p class="desc">Trabalhamos só por encomenda, para garantir qualidade e frescor. Monte seu pedido abaixo e envie direto pelo WhatsApp — sem precisar digitar tudo de novo.</p>
     <div class="cta-row">
       <button class="btn btn-primary" onclick="document.getElementById('builder').scrollIntoView({behavior:'smooth'})">🍰 Montar pedido</button>
-      <button class="btn btn-ghost" onclick="document.getElementById('cardapio-ref').scrollIntoView({behavior:'smooth'})">Ver cardápio completo</button>
+      <button class="btn btn-ghost" onclick="document.getElementById('galeria').scrollIntoView({behavior:'smooth'})">📸 Ver fotos</button>
     </div>
   </header>
+
+  <!-- GALERIA -->
+  <section id="galeria">
+    <div class="tape-label">Nossas delícias</div>
+    <p style="font-size:14px;line-height:1.55;margin-bottom:6px;">Um gostinho do que você pode encomendar 🫐</p>
+    <div class="gallery">
+      <div class="gallery-item" onclick="openLightbox(this)">
+        <img src="https://via.placeholder.com/400x400/FBEEDA/6B3564?text=Bolo+Morango" alt="Bolo de morango">
+        <div class="gallery-caption">Bolo de morango 🍓</div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox(this)">
+        <img src="https://via.placeholder.com/400x400/F0BFCB/3B1F38?text=Brigadeiros" alt="Brigadeiros">
+        <div class="gallery-caption">Brigadeiros gourmet 🍫</div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox(this)">
+        <img src="https://via.placeholder.com/400x400/E39AAC/3B1F38?text=Cupcakes" alt="Cupcakes">
+        <div class="gallery-caption">Cupcakes decorados 🧁</div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox(this)">
+        <img src="https://via.placeholder.com/400x400/F3DDB2/6B3564?text=Doces+Finos" alt="Doces finos">
+        <div class="gallery-caption">Doces finos 💎</div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox(this)">
+        <img src="https://via.placeholder.com/400x400/E8CFA0/3B1F38?text=Bolo+Chocolate" alt="Bolo de chocolate">
+        <div class="gallery-caption">Bolo de chocolate 🍫</div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox(this)">
+        <img src="https://via.placeholder.com/400x400/D4A0B5/3B1F38?text=Bem+Casados" alt="Bem casados">
+        <div class="gallery-caption">Bem-casados 🎁</div>
+      </div>
+    </div>
+  </section>
 
   <!-- INFO -->
   <section>
@@ -284,6 +478,19 @@
       <div class="info-card"><b>Pagamento:</b> 50% de entrada na encomenda + 50% na entrega. Pix, débito, crédito ou dinheiro. Parcelamento no cartão se pago antes da entrega.</div>
       <div class="info-card"><b>📍 Retirada no local:</b> não fazemos entrega — o pedido é retirado na confeitaria. Também não fazemos topo de bolo.</div>
       <div class="info-card"><b>Quantidade por convidado:</b> 100g de bolo · 5 docinhos · 1 a 2 lembrancinhas.</div>
+    </div>
+
+    <!-- INSTAGRAM CARD -->
+    <div class="info-card" style="text-align:center;margin-top:12px;background:linear-gradient(135deg, #FFF8EC, #F0BFCB);">
+      <div style="font-size:28px;margin-bottom:6px;">📸</div>
+      <b style="font-size:15px;">Siga nosso Instagram!</b>
+      <p style="font-size:13px;margin:8px 0 12px;">Fotos dos nossos bolos e doces todos os dias</p>
+      <a href="https://instagram.com/amorasucreee" target="_blank" class="social-btn instagram" style="display:inline-flex;">
+        <svg viewBox="0 0 24 24" fill="currentColor" style="width:18px;height:18px;">
+          <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zm0 10.162a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
+        </svg>
+        @amorasucreee
+      </a>
     </div>
   </section>
 
@@ -377,6 +584,22 @@
     <div class="script">Amora Sucrée</div>
     Rua Vicente Ferreira dos Santos, Nº 60, Centro<br>
     Feito com carinho para encomendas artesanais 🫐
+    
+    <!-- REDES SOCIAIS -->
+    <div class="social-links">
+      <a href="https://instagram.com/amorasucreee" target="_blank" class="social-btn instagram" aria-label="Instagram">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zm0 10.162a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
+        </svg>
+        @amorasucreee
+      </a>
+      <a href="https://wa.me/5515996517508" target="_blank" class="social-btn whatsapp" aria-label="WhatsApp">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+        </svg>
+        WhatsApp
+      </a>
+    </div>
   </footer>
 </div>
 
@@ -410,9 +633,26 @@
   </div>
 </div>
 
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <button class="lightbox-close" onclick="closeLightbox()">✕</button>
+  <img id="lightboxImg" src="" alt="Imagem ampliada">
+</div>
+
+<!-- BOTÃO FLUTUANTE WHATSAPP -->
+<a href="https://wa.me/5515996517508?text=Olá%2C%20Amora%20Sucrée!%20Gostaria%20de%20tirar%20uma%20dúvida%20%F0%9F%AB%90" 
+   class="whatsapp-float" 
+   target="_blank" 
+   aria-label="Falar no WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+  </svg>
+</a>
+
 <script>
 /* ======================= CONFIG ======================= */
 const WHATSAPP_NUMBER = "5515996517508"; // número da Amora Sucrée (DDI 55 + DDD 15 + número)
+const INSTAGRAM_URL = "https://instagram.com/amorasucreee";
 
 /* ======================= DATA ======================= */
 const cakeSizes = [
@@ -729,6 +969,27 @@ document.getElementById('sendWhats').addEventListener('click', ()=>{
 
   const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`;
   window.open(url, '_blank');
+});
+
+/* ======================= GALERIA / LIGHTBOX ======================= */
+function openLightbox(item){
+  const img = item.querySelector('img');
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightboxImg');
+  lightboxImg.src = img.src;
+  lightboxImg.alt = img.alt;
+  lightbox.classList.add('show');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeLightbox(){
+  const lightbox = document.getElementById('lightbox');
+  lightbox.classList.remove('show');
+  document.body.style.overflow = '';
+}
+
+document.addEventListener('keydown', (e)=>{
+  if(e.key === 'Escape') closeLightbox();
 });
 </script>
 </body>
