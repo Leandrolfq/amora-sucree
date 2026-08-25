@@ -1,0 +1,996 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Amora Sucrée · Cardápio</title>
+<meta name="description" content="Amora Sucrée - Confeitaria artesanal. Bolos personalizados, docinhos e brigadeiros sob encomenda. Retirada no local.">
+<meta property="og:title" content="Amora Sucrée · Confeitaria Artesanal">
+<meta property="og:description" content="Bolos, doces e brigadeiros artesanais feitos sob encomenda.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playball&family=Fredoka:wght@500;600;700&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#FBEEDA;
+    --cream-deep:#F3DDB2;
+    --paper:#FFF8EC;
+    --plum:#3B1F38;
+    --plum-mid:#6B3564;
+    --berry:#A24B79;
+    --rose:#F0BFCB;
+    --rose-deep:#E39AAC;
+    --gold:#B0742A;
+    --ink:#4A2E1E;
+    --line:#E8CFA0;
+    --shadow: 0 6px 0 rgba(59,31,56,0.08);
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--cream);
+    color:var(--ink);
+    font-family:'Quicksand', sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{ font-family:'Fredoka', sans-serif; color:var(--plum); margin:0; }
+  .script{ font-family:'Playball', cursive; }
+  a{ color:inherit; }
+  img,svg{ display:block; }
+
+  /* ---------- background texture ---------- */
+  .bg-berries{
+    position:relative;
+  }
+  .bg-berries::before{
+    content:"";
+    position:absolute; inset:0;
+    background-image: radial-gradient(circle at 8px 8px, rgba(107,53,100,0.10) 3px, transparent 3.5px);
+    background-size: 26px 26px;
+    pointer-events:none;
+  }
+
+  /* ---------- layout shell ---------- */
+  .wrap{ max-width:520px; margin:0 auto; position:relative; }
+
+  /* ---------- hero ---------- */
+  .hero{
+    padding:56px 24px 40px;
+    text-align:center;
+    background:
+      radial-gradient(120% 80% at 50% -10%, #f6e2ba 0%, var(--cream) 60%);
+    border-bottom:2px dashed var(--line);
+  }
+  .eyebrow{
+    display:inline-block;
+    font-size:12px;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--berry);
+    font-weight:700;
+    margin-bottom:6px;
+  }
+  .hero h1.script{
+    font-size:64px;
+    line-height:0.95;
+    color:var(--plum);
+    text-shadow: 3px 3px 0 var(--rose);
+    margin:2px 0 2px;
+  }
+  .hero .tagline-sub{
+    font-family:'Fredoka';
+    font-size:14px;
+    letter-spacing:.06em;
+    color:var(--plum-mid);
+    margin-bottom:18px;
+  }
+  .hero blockquote{
+    font-family:'Playball';
+    font-size:21px;
+    color:var(--berry);
+    margin:14px auto 22px;
+    max-width:320px;
+    line-height:1.25;
+  }
+  .hero p.desc{
+    font-size:14.5px;
+    line-height:1.6;
+    max-width:340px;
+    margin:0 auto 26px;
+    color:var(--ink);
+  }
+  .cta-row{ display:flex; gap:10px; justify-content:center; flex-wrap:wrap; }
+  .btn{
+    font-family:'Fredoka'; font-weight:600; font-size:14.5px;
+    border:none; border-radius:999px;
+    padding:13px 22px;
+    cursor:pointer;
+    display:inline-flex; align-items:center; gap:8px;
+    transition:transform .15s ease;
+  }
+  .btn:active{ transform:scale(0.96); }
+  .btn-primary{ background:var(--plum); color:var(--cream); box-shadow:var(--shadow); }
+  .btn-ghost{ background:var(--paper); color:var(--plum); border:1.5px solid var(--plum); }
+
+  /* ---------- tape section labels ---------- */
+  .tape-label{
+    display:inline-block;
+    background:linear-gradient(180deg,#E9AE93,#E39A7C);
+    color:var(--plum);
+    font-family:'Fredoka'; font-weight:600; font-size:16px;
+    padding:8px 22px;
+    margin:0 0 18px -6px;
+    transform:rotate(-1deg);
+    clip-path: polygon(2% 0%, 98% 3%, 100% 100%, 0% 97%);
+    box-shadow: 0 3px 0 rgba(0,0,0,0.07);
+  }
+
+  section{ padding:36px 22px; }
+  section + section{ border-top:2px dashed var(--line); }
+
+  /* ---------- info cards ---------- */
+  .info-grid{ display:grid; gap:10px; }
+  .info-card{
+    background:var(--paper);
+    border:1.5px solid var(--line);
+    border-radius:16px;
+    padding:14px 16px;
+    font-size:14px;
+    line-height:1.5;
+  }
+  .info-card b{ color:var(--plum); }
+
+  /* ---------- galeria de fotos ---------- */
+  .gallery{
+    display:grid;
+    grid-template-columns:repeat(2, 1fr);
+    gap:12px;
+    margin-top:16px;
+  }
+  .gallery-item{
+    position:relative;
+    border-radius:16px;
+    overflow:hidden;
+    aspect-ratio:1/1;
+    cursor:pointer;
+    box-shadow:0 4px 12px rgba(59,31,56,0.12);
+    transition:transform .25s ease, box-shadow .25s ease;
+  }
+  .gallery-item:hover{
+    transform:translateY(-4px);
+    box-shadow:0 8px 20px rgba(59,31,56,0.2);
+  }
+  .gallery-item img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    transition:transform .4s ease;
+  }
+  .gallery-item:hover img{
+    transform:scale(1.08);
+  }
+  .gallery-item .gallery-caption{
+    position:absolute;
+    bottom:0;
+    left:0;
+    right:0;
+    padding:12px;
+    background:linear-gradient(transparent, rgba(59,31,56,0.85));
+    color:#fff;
+    font-size:12px;
+    font-weight:600;
+    opacity:0;
+    transition:opacity .3s ease;
+  }
+  .gallery-item:hover .gallery-caption{
+    opacity:1;
+  }
+
+  /* ---------- lightbox ---------- */
+  .lightbox{
+    position:fixed;
+    inset:0;
+    background:rgba(59,31,56,0.92);
+    display:none;
+    align-items:center;
+    justify-content:center;
+    z-index:100;
+    cursor:zoom-out;
+  }
+  .lightbox.show{
+    display:flex;
+  }
+  .lightbox img{
+    max-width:90%;
+    max-height:85vh;
+    border-radius:14px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.3);
+  }
+  .lightbox .lightbox-close{
+    position:absolute;
+    top:20px;
+    right:20px;
+    background:rgba(255,255,255,0.15);
+    color:#fff;
+    border:none;
+    width:40px;
+    height:40px;
+    border-radius:50%;
+    font-size:20px;
+    cursor:pointer;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    transition:background .2s;
+  }
+  .lightbox .lightbox-close:hover{
+    background:rgba(255,255,255,0.3);
+  }
+
+  /* ---------- builder ---------- */
+  .builder-intro{ font-size:14px; line-height:1.55; margin-bottom:18px; }
+  .cat{
+    background:var(--paper);
+    border:1.5px solid var(--line);
+    border-radius:18px;
+    margin-bottom:14px;
+    overflow:hidden;
+  }
+  .cat-head{
+    width:100%;
+    display:flex; align-items:center; justify-content:space-between;
+    padding:15px 18px;
+    background:none; border:none; cursor:pointer;
+    font-family:'Fredoka'; font-size:15.5px; font-weight:600; color:var(--plum);
+    text-align:left;
+  }
+  .cat-head .chevron{ transition:transform .2s ease; color:var(--berry); font-size:18px; }
+  .cat.open .chevron{ transform:rotate(180deg); }
+  .cat-body{ display:none; padding:0 18px 16px; }
+  .cat.open .cat-body{ display:block; }
+
+  .item{
+    display:flex; align-items:center; justify-content:space-between; gap:10px;
+    padding:11px 0;
+    border-top:1px dashed var(--line);
+  }
+  .item:first-child{ border-top:none; }
+  .item-info{ flex:1; min-width:0; }
+  .item-name{ font-size:14px; font-weight:600; color:var(--ink); }
+  .item-meta{ font-size:12px; color:var(--berry); margin-top:1px; }
+  .item-price{ font-size:12.5px; color:var(--gold); font-weight:700; margin-top:2px; }
+
+  .stepper{ display:flex; align-items:center; gap:8px; flex-shrink:0; }
+  .stepper button{
+    width:28px; height:28px; border-radius:50%;
+    border:1.5px solid var(--berry); background:var(--paper); color:var(--berry);
+    font-size:16px; font-weight:700; line-height:1; cursor:pointer;
+  }
+  .stepper button:active{ background:var(--rose); }
+  .stepper .qty{ min-width:22px; text-align:center; font-weight:700; font-size:14px; color:var(--plum); }
+
+  select, input[type=text], input[type=date], textarea{
+    font-family:'Quicksand'; font-size:14px;
+    border:1.5px solid var(--line); border-radius:10px;
+    padding:9px 10px; background:#fff; color:var(--ink); width:100%;
+  }
+
+  .single-choice{ display:flex; flex-direction:column; gap:8px; margin:6px 0 4px; }
+  .radio-row{ display:flex; align-items:center; gap:8px; font-size:13.5px; }
+  .radio-row input{ accent-color:var(--berry); width:16px; height:16px; }
+
+  .note-box{
+    font-size:12px; color:var(--plum-mid); background:var(--rose);
+    border-radius:10px; padding:8px 10px; margin-top:8px; line-height:1.45;
+  }
+
+  /* ---------- simple menu list sections (non-orderable reference) ---------- */
+  .tag-list{ display:flex; flex-wrap:wrap; gap:7px; margin-top:10px; }
+  .tag{
+    background:var(--paper); border:1px solid var(--line); border-radius:999px;
+    padding:6px 12px; font-size:12.5px; color:var(--ink);
+  }
+  .price-line{
+    display:flex; justify-content:space-between; font-size:13.5px;
+    padding:8px 0; border-top:1px dashed var(--line);
+  }
+  .price-line:first-child{ border-top:none; }
+  .price-line span:last-child{ color:var(--gold); font-weight:700; }
+
+  /* ---------- order bar ---------- */
+  .order-bar{
+    position:sticky; bottom:0; left:0; right:0;
+    background:var(--plum); color:var(--cream);
+    padding:12px 18px;
+    display:flex; align-items:center; justify-content:space-between;
+    box-shadow:0 -6px 18px rgba(0,0,0,0.18);
+    z-index:20;
+  }
+  .order-bar .count{ font-size:12px; opacity:.8; }
+  .order-bar .total{ font-family:'Fredoka'; font-weight:700; font-size:17px; }
+  .order-bar button{
+    background:var(--rose); color:var(--plum);
+    font-family:'Fredoka'; font-weight:700; font-size:13.5px;
+    border:none; border-radius:999px; padding:10px 18px; cursor:pointer;
+  }
+
+  /* ---------- checkout modal ---------- */
+  .modal-overlay{
+    position:fixed; inset:0; background:rgba(59,31,56,0.55);
+    display:none; align-items:flex-end; justify-content:center; z-index:50;
+  }
+  .modal-overlay.show{ display:flex; }
+  .modal{
+    background:var(--cream); width:100%; max-width:520px;
+    border-radius:22px 22px 0 0; padding:22px;
+    max-height:85vh; overflow-y:auto;
+  }
+  .modal h3{ margin-bottom:12px; }
+  .modal .line{
+    display:flex; justify-content:space-between; font-size:13.5px; padding:7px 0;
+    border-bottom:1px dashed var(--line);
+  }
+  .modal .line span:last-child{ font-weight:700; color:var(--gold); }
+  .modal .grand{ font-family:'Fredoka'; font-size:17px; color:var(--plum); padding-top:12px; }
+  .modal label{ font-size:12.5px; font-weight:700; color:var(--plum-mid); display:block; margin:14px 0 5px; }
+  .modal-actions{ display:flex; gap:10px; margin-top:18px; }
+  .modal-actions .btn{ flex:1; justify-content:center; }
+  .empty-msg{ font-size:13.5px; color:var(--berry); text-align:center; padding:10px 0; }
+
+  footer{
+    padding:30px 22px 90px;
+    text-align:center;
+    font-size:12.5px; color:var(--plum-mid); line-height:1.7;
+  }
+  footer .script{ font-size:26px; color:var(--plum); }
+
+  .config-note{
+    font-size:11.5px; background:#fff3d6; border:1px dashed #d8a93d; color:#7a5210;
+    border-radius:10px; padding:8px 10px; margin:10px 22px 0;
+  }
+
+  /* ---------- botão flutuante de WhatsApp ---------- */
+  .whatsapp-float{
+    position:fixed;
+    bottom:90px;
+    right:16px;
+    background:#25D366;
+    color:#fff;
+    width:52px;
+    height:52px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-decoration:none;
+    box-shadow:0 4px 14px rgba(37,211,102,0.4);
+    z-index:15;
+    transition:transform .2s ease, box-shadow .2s ease;
+  }
+  .whatsapp-float:hover{
+    transform:scale(1.08);
+    box-shadow:0 6px 18px rgba(37,211,102,0.55);
+  }
+  .whatsapp-float:active{
+    transform:scale(0.95);
+  }
+  .whatsapp-float svg{
+    width:28px;
+    height:28px;
+  }
+
+  /* ---------- redes sociais ---------- */
+  .social-links{
+    display:flex;
+    gap:12px;
+    justify-content:center;
+    margin-top:20px;
+    flex-wrap:wrap;
+  }
+  .social-btn{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    padding:10px 18px;
+    border-radius:999px;
+    text-decoration:none;
+    font-family:'Fredoka';
+    font-weight:600;
+    font-size:13.5px;
+    transition:transform .2s ease, box-shadow .2s ease;
+  }
+  .social-btn:hover{
+    transform:translateY(-3px);
+  }
+  .social-btn:active{
+    transform:scale(0.95);
+  }
+  .social-btn.instagram{
+    background:linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+    color:#fff;
+    box-shadow:0 4px 14px rgba(220,39,67,0.35);
+  }
+  .social-btn.whatsapp{
+    background:#25D366;
+    color:#fff;
+    box-shadow:0 4px 14px rgba(37,211,102,0.35);
+  }
+  .social-btn svg{
+    width:18px;
+    height:18px;
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap bg-berries">
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="eyebrow">Ateliê</div>
+    <h1 class="script">Amora Sucrée</h1>
+    <div class="tagline-sub">CONFEITARIA ARTESANAL</div>
+    <blockquote>"Onde o amor é o ingrediente secreto<br>e cada doce é uma obra-prima."</blockquote>
+    <p class="desc">Trabalhamos só por encomenda, para garantir qualidade e frescor. Monte seu pedido abaixo e envie direto pelo WhatsApp — sem precisar digitar tudo de novo.</p>
+    <div class="cta-row">
+      <button class="btn btn-primary" onclick="document.getElementById('builder').scrollIntoView({behavior:'smooth'})">🍰 Montar pedido</button>
+      <button class="btn btn-ghost" onclick="document.getElementById('galeria').scrollIntoView({behavior:'smooth'})">📸 Ver fotos</button>
+    </div>
+  </header>
+
+  <!-- GALERIA -->
+  <section id="galeria">
+    <div class="tape-label">Nossas delícias</div>
+    <p style="font-size:14px;line-height:1.55;margin-bottom:6px;">Um gostinho do que você pode encomendar 🫐</p>
+    <div class="gallery">
+      <div class="gallery-item" onclick="openLightbox(this)">
+        <img src="https://via.placeholder.com/400x400/FBEEDA/6B3564?text=Bolo+Morango" alt="Bolo de morango">
+        <div class="gallery-caption">Bolo de morango 🍓</div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox(this)">
+        <img src="https://via.placeholder.com/400x400/F0BFCB/3B1F38?text=Brigadeiros" alt="Brigadeiros">
+        <div class="gallery-caption">Brigadeiros gourmet 🍫</div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox(this)">
+        <img src="https://via.placeholder.com/400x400/E39AAC/3B1F38?text=Cupcakes" alt="Cupcakes">
+        <div class="gallery-caption">Cupcakes decorados 🧁</div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox(this)">
+        <img src="https://via.placeholder.com/400x400/F3DDB2/6B3564?text=Doces+Finos" alt="Doces finos">
+        <div class="gallery-caption">Doces finos 💎</div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox(this)">
+        <img src="https://via.placeholder.com/400x400/E8CFA0/3B1F38?text=Bolo+Chocolate" alt="Bolo de chocolate">
+        <div class="gallery-caption">Bolo de chocolate 🍫</div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox(this)">
+        <img src="https://via.placeholder.com/400x400/D4A0B5/3B1F38?text=Bem+Casados" alt="Bem casados">
+        <div class="gallery-caption">Bem-casados 🎁</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INFO -->
+  <section>
+    <div class="tape-label">Informações iniciais</div>
+    <div class="info-grid">
+      <div class="info-card"><b>Encomendas</b> com no mínimo 5 dias de antecedência (10 dias para doces finos).</div>
+      <div class="info-card"><b>Pagamento:</b> 50% de entrada na encomenda + 50% na entrega. Pix, débito, crédito ou dinheiro. Parcelamento no cartão se pago antes da entrega.</div>
+      <div class="info-card"><b>📍 Retirada no local:</b> não fazemos entrega — o pedido é retirado na confeitaria. Também não fazemos topo de bolo.</div>
+      <div class="info-card"><b>Quantidade por convidado:</b> 100g de bolo · 5 docinhos · 1 a 2 lembrancinhas.</div>
+    </div>
+
+    <!-- INSTAGRAM CARD -->
+    <div class="info-card" style="text-align:center;margin-top:12px;background:linear-gradient(135deg, #FFF8EC, #F0BFCB);">
+      <div style="font-size:28px;margin-bottom:6px;">📸</div>
+      <b style="font-size:15px;">Siga nosso Instagram!</b>
+      <p style="font-size:13px;margin:8px 0 12px;">Fotos dos nossos bolos e doces todos os dias</p>
+      <a href="https://instagram.com/amorasucreee" target="_blank" class="social-btn instagram" style="display:inline-flex;">
+        <svg viewBox="0 0 24 24" fill="currentColor" style="width:18px;height:18px;">
+          <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zm0 10.162a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
+        </svg>
+        @amorasucreee
+      </a>
+    </div>
+  </section>
+
+  <!-- BUILDER -->
+  <section id="builder">
+    <div class="tape-label">Monte seu pedido</div>
+    <p class="builder-intro">Escolha os itens, ajuste as quantidades e no final você vê o resumo com valor estimado — é só confirmar e mandar pro WhatsApp da Amora Sucrée. Itens marcados como <em>"sob consulta"</em> entram no pedido sem valor fechado, pra confeiteira confirmar com você.</p>
+
+    <!-- CAKE -->
+    <div class="cat" data-cat>
+      <button class="cat-head" data-toggle>🎂 Bolo personalizado <span class="chevron">▾</span></button>
+      <div class="cat-body">
+        <label style="font-size:12.5px;font-weight:700;color:var(--plum-mid);">Formato e tamanho</label>
+        <div class="single-choice" id="cakeSizeChoices"></div>
+
+        <label style="font-size:12.5px;font-weight:700;color:var(--plum-mid);margin-top:12px;display:block;">Massa</label>
+        <div class="single-choice" id="cakeMassaChoices"></div>
+
+        <label style="font-size:12.5px;font-weight:700;color:var(--plum-mid);margin-top:12px;display:block;">Recheio (inclui até 2 tradicionais)</label>
+        <div class="single-choice" id="cakeRecheioChoices"></div>
+        <div class="note-box">Quer recheio especial ou premium? Selecione mesmo assim — vai como observação e a Amora Sucrée confirma o acréscimo (R$65 a R$85/kg).</div>
+
+        <label style="font-size:12.5px;font-weight:700;color:var(--plum-mid);margin-top:12px;display:block;">Cobertura</label>
+        <div class="single-choice" id="cakeCoberturaChoices"></div>
+
+        <div class="item" style="border-top:1.5px dashed var(--line);margin-top:10px;padding-top:14px;">
+          <div class="item-info">
+            <div class="item-name">Adicionar bolo ao pedido</div>
+            <div class="item-price" id="cakePriceLine">—</div>
+          </div>
+          <button class="btn btn-primary" style="padding:9px 16px;font-size:13px;" id="addCakeBtn">Adicionar</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- generic categories injected by JS -->
+    <div id="genericCats"></div>
+  </section>
+
+  <!-- REFERENCE MENU -->
+  <section id="cardapio-ref">
+    <div class="tape-label">Cardápio completo</div>
+
+    <h3 style="margin-bottom:8px;">Massas</h3>
+    <div class="tag-list"><span class="tag">Baunilha</span><span class="tag">Cenoura</span><span class="tag">Chocolate</span></div>
+
+    <h3 style="margin:18px 0 4px;">Recheios tradicionais · R$60/kg</h3>
+    <div class="tag-list">
+      <span class="tag">Beijinho</span><span class="tag">Bicho de pé</span><span class="tag">Brigadeiro</span>
+      <span class="tag">Brigadeiro branco</span><span class="tag">Brigadeiro de ninho</span><span class="tag">Creme c/ morango</span>
+      <span class="tag">Creme c/ abacaxi</span><span class="tag">Creme de chocolate c/ morango</span><span class="tag">Creme alpino</span>
+      <span class="tag">Doce de leite</span><span class="tag">Prestígio</span>
+    </div>
+
+    <h3 style="margin:18px 0 4px;">Recheios especiais · R$65/kg</h3>
+    <div class="tag-list">
+      <span class="tag">Brigadeiro c/ morango</span><span class="tag">Brig. branco c/ morango</span><span class="tag">Brig. de ninho c/ morango</span>
+      <span class="tag">Brig. de creme de avelã</span><span class="tag">Brig. de maracujá</span><span class="tag">Brig. de paçoquita</span>
+      <span class="tag">Doce de leite c/ abacaxi</span><span class="tag">Doce de leite c/ ameixa</span><span class="tag">Doce de leite c/ nozes</span>
+    </div>
+
+    <h3 style="margin:18px 0 4px;">Recheios premium · R$85/kg</h3>
+    <div class="tag-list">
+      <span class="tag">Brigadeiro de pistache</span><span class="tag">Sonho de valsa</span>
+      <span class="tag">Strogonoff de chocolate</span><span class="tag">Trufado branco c/ morango</span>
+    </div>
+
+    <h3 style="margin:18px 0 4px;">Cobertura</h3>
+    <div class="price-line"><span>Chantilly</span><span>incluso</span></div>
+    <div class="price-line"><span>Brigadeiro</span><span>R$10,00/kg</span></div>
+    <div class="price-line"><span>Ganache</span><span>R$12,00/kg</span></div>
+
+    <h3 style="margin:18px 0 4px;">Decoração extra</h3>
+    <div class="price-line"><span>Raspas de chocolate</span><span>R$4,00/kg</span></div>
+    <div class="price-line"><span>Morangos</span><span>R$5,00/kg</span></div>
+    <div class="price-line"><span>Brigadeiros</span><span>R$1,00/un</span></div>
+    <div class="price-line"><span>Pó de decoração</span><span>R$5,00/kg</span></div>
+    <div class="price-line"><span>Griter</span><span>R$8,00/kg</span></div>
+
+    <h3 style="margin:18px 0 4px;">Tamanhos gerais (sob consulta de valor)</h3>
+    <div class="price-line"><span>Redondo 20cm · 1 / 2 recheios</span><span>1kg / 1,5kg</span></div>
+    <div class="price-line"><span>Redondo 23cm · 1 / 2 recheios</span><span>1,5kg / 2kg</span></div>
+    <div class="price-line"><span>Redondo 25cm · 1 / 2 recheios</span><span>2kg / 3kg</span></div>
+    <div class="price-line"><span>Retangular 26x18 · 1 / 2 recheios</span><span>1kg / 2kg</span></div>
+    <div class="price-line"><span>Retangular 30x20 · 1 / 2 recheios</span><span>2kg / 3kg</span></div>
+    <div class="price-line"><span>Retangular 38x28 · 1 / 2 recheios</span><span>3kg / 4kg</span></div>
+    <div class="price-line"><span>Retangular 42x31 · 1 / 2 recheios</span><span>4kg / 6kg</span></div>
+  </section>
+
+  <footer>
+    <div class="script">Amora Sucrée</div>
+    Rua Vicente Ferreira dos Santos, Nº 60, Centro<br>
+    Feito com carinho para encomendas artesanais 🫐
+    
+    <!-- REDES SOCIAIS -->
+    <div class="social-links">
+      <a href="https://instagram.com/amorasucreee" target="_blank" class="social-btn instagram" aria-label="Instagram">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zm0 10.162a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
+        </svg>
+        @amorasucreee
+      </a>
+      <a href="https://wa.me/5515996517508" target="_blank" class="social-btn whatsapp" aria-label="WhatsApp">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+        </svg>
+        WhatsApp
+      </a>
+    </div>
+  </footer>
+</div>
+
+<!-- STICKY ORDER BAR -->
+<div class="order-bar">
+  <div>
+    <div class="count" id="orderCount">0 itens no pedido</div>
+    <div class="total" id="orderTotal">R$ 0,00</div>
+  </div>
+  <button id="openCheckout">Ver pedido</button>
+</div>
+
+<!-- CHECKOUT MODAL -->
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal">
+    <h3>Seu pedido</h3>
+    <div id="modalLines"></div>
+    <label for="custName">Seu nome</label>
+    <input type="text" id="custName" placeholder="Como podemos te chamar?">
+    <label for="custDate">Data desejada de retirada (mín. 5 dias de antecedência · retirada no local, não fazemos entrega)</label>
+    <input type="date" id="custDate">
+    <div id="dateWarning" style="display:none;font-size:12px;color:#a13636;background:#fce4e4;border-radius:8px;padding:6px 10px;margin-top:6px;">
+      ⚠️ A data escolhida é muito próxima. Pedidos precisam de no mínimo 5 dias de antecedência.
+    </div>
+    <label for="custNotes">Observações (opcional)</label>
+    <textarea id="custNotes" rows="2" placeholder="Alguma preferência ou detalhe extra?"></textarea>
+    <div class="modal-actions">
+      <button class="btn btn-ghost" onclick="closeModal()">Fechar</button>
+      <button class="btn btn-primary" id="sendWhats">Enviar no WhatsApp</button>
+    </div>
+  </div>
+</div>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <button class="lightbox-close" onclick="closeLightbox()">✕</button>
+  <img id="lightboxImg" src="" alt="Imagem ampliada">
+</div>
+
+<!-- BOTÃO FLUTUANTE WHATSAPP -->
+<a href="https://wa.me/5515996517508?text=Olá%2C%20Amora%20Sucrée!%20Gostaria%20de%20tirar%20uma%20dúvida%20%F0%9F%AB%90" 
+   class="whatsapp-float" 
+   target="_blank" 
+   aria-label="Falar no WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+  </svg>
+</a>
+
+<script>
+/* ======================= CONFIG ======================= */
+const WHATSAPP_NUMBER = "5515996517508"; // número da Amora Sucrée (DDI 55 + DDD 15 + número)
+const INSTAGRAM_URL = "https://instagram.com/amorasucreee";
+
+/* ======================= DATA ======================= */
+const cakeSizes = [
+  { id:'a10-15', label:'Redondo alto 10cm · 15cm', kg:1.5, price:95 },
+  { id:'a10-17', label:'Redondo alto 10cm · 17cm', kg:1.8, price:115 },
+  { id:'a10-20', label:'Redondo alto 10cm · 20cm', kg:2.5, price:160 },
+  { id:'a10-23', label:'Redondo alto 10cm · 23cm', kg:3,   price:190 },
+  { id:'a15-17', label:'Redondo alto 15cm · 17cm', kg:2,   price:150 },
+  { id:'a15-20', label:'Redondo alto 15cm · 20cm', kg:3,   price:225 },
+  { id:'andar-20', label:'Bolo de andar · base 20 / topo 15', kg:null, price:300 },
+  { id:'andar-23', label:'Bolo de andar · base 23 / topo 17', kg:null, price:400 },
+];
+const massas = ['Baunilha','Cenoura','Chocolate'];
+const recheios = ['Beijinho','Bicho de pé','Brigadeiro','Brigadeiro branco','Brigadeiro de ninho','Creme c/ morango','Creme c/ abacaxi','Doce de leite','Prestígio','— quero recheio especial/premium (sob consulta)'];
+const coberturas = [
+  { id:'chantilly', label:'Chantilly (incluso)', perKg:0 },
+  { id:'brigadeiro', label:'Brigadeiro (+R$10/kg)', perKg:10 },
+  { id:'ganache', label:'Ganache (+R$12/kg)', perKg:12 },
+];
+
+const categories = [
+  {
+    key:'docinhos', icon:'🍬', title:'Docinhos tradicionais',
+    items:[
+      { name:'Cento (10g/un, 2 sabores)', unit:90, min:1, step:1, unitLabel:'cento(s)' },
+      { name:'Cento (15g/un, 3 sabores)', unit:150, min:1, step:1, unitLabel:'cento(s)' },
+    ]
+  },
+  {
+    key:'brigEspeciais', icon:'🍫', title:'Brigadeiros especiais (cento)',
+    items:[ { name:'Café, Casadinho, Limão, Maracujá, Ninho e outros', unit:145, min:1, step:1, unitLabel:'cento(s)' } ]
+  },
+  {
+    key:'brigPremium', icon:'✨', title:'Brigadeiros premium (cento)',
+    items:[ { name:'Branco, Caramelo, Ferrero Rocher e outros', unit:170, min:1, step:1, unitLabel:'cento(s)' } ]
+  },
+  {
+    key:'brigModelados', icon:'🎀', title:'Brigadeiros modelados (mín. 25 un)',
+    items:[ { name:'Coração, flor, letras, temas — 15g', unit:1.8, min:25, step:1, unitLabel:'un' } ]
+  },
+  {
+    key:'brigPistache', icon:'🌰', title:'Brigadeiro de pistache (mín. 25 un)',
+    items:[
+      { name:'Com confeito', unit:2.5, min:25, step:1, unitLabel:'un' },
+      { name:'Com pistache triturado', unit:3.0, min:25, step:1, unitLabel:'un' },
+    ]
+  },
+  {
+    key:'cupcakes', icon:'🧁', title:'Cupcakes',
+    items:[
+      { name:'Mini cupcake (mín. 24 un)', unit:3, min:24, step:1, unitLabel:'un' },
+      { name:'Cupcake (mín. 12 un)', unit:6, min:12, step:1, unitLabel:'un' },
+    ]
+  },
+  {
+    key:'docesFinos', icon:'💎', title:'Doces finos (mín. 25 por sabor)',
+    items:[
+      { name:'Camafeu', unit:3, min:25, step:1, unitLabel:'un' },
+      { name:'Bombom de avelã', unit:3, min:25, step:1, unitLabel:'un' },
+      { name:'Brownie petit', unit:2.5, min:25, step:1, unitLabel:'un' },
+      { name:'Copinho de chocolate', unit:2, min:25, step:1, unitLabel:'un' },
+      { name:'Copinho c/ morango', unit:2.2, min:25, step:1, unitLabel:'un' },
+      { name:'Conchinhas', unit:2, min:25, step:1, unitLabel:'un' },
+    ]
+  },
+  {
+    key:'lembrancinhas', icon:'🎁', title:'Lembrancinhas',
+    items:[
+      { name:'Bem-casados (mín. 20 un)', unit:4, min:20, step:1, unitLabel:'un' },
+      { name:'Brownies (mín. 15 un)', unit:4.5, min:15, step:1, unitLabel:'un' },
+      { name:'Mini pão de mel (mín. 12 un)', unit:4, min:12, step:1, unitLabel:'un' },
+    ]
+  },
+  {
+    key:'placa', icon:'🏷️', title:'Placa de bolo',
+    items:[
+      { name:'32x22 · Baunilha', unit:26, min:1, step:1, unitLabel:'un' },
+      { name:'32x22 · Chocolate', unit:32, min:1, step:1, unitLabel:'un' },
+      { name:'40x28 · Baunilha', unit:39, min:1, step:1, unitLabel:'un' },
+      { name:'40x28 · Chocolate', unit:44, min:1, step:1, unitLabel:'un' },
+      { name:'44x31 · Baunilha', unit:52, min:1, step:1, unitLabel:'un' },
+      { name:'44x31 · Chocolate', unit:64, min:1, step:1, unitLabel:'un' },
+    ]
+  },
+];
+
+/* ======================= STATE ======================= */
+let cart = []; // {label, qty, unit, total, note}
+let cakeSel = { size:null, massa:null, recheios:[], cobertura:'chantilly' };
+
+/* ======================= RENDER: CAKE BUILDER ======================= */
+function renderRadios(container, list, name, onPick){
+  container.innerHTML = list.map((opt,i)=>{
+    const id = name+'-'+i;
+    const label = typeof opt === 'string' ? opt : opt.label;
+    return `<label class="radio-row" for="${id}">
+      <input type="radio" id="${id}" name="${name}" value="${i}">
+      ${label}
+    </label>`;
+  }).join('');
+  container.querySelectorAll('input').forEach(inp=>{
+    inp.addEventListener('change', ()=> onPick(list[+inp.value]));
+  });
+}
+
+function renderCheckRecheios(container, list){
+  container.innerHTML = list.map((r,i)=>`
+    <label class="radio-row">
+      <input type="checkbox" data-r="${i}">
+      ${r}
+    </label>`).join('');
+  container.querySelectorAll('input').forEach(inp=>{
+    inp.addEventListener('change', ()=>{
+      const val = list[+inp.dataset.r];
+      if(inp.checked){
+        if(cakeSel.recheios.length>=2){ inp.checked=false; return; }
+        cakeSel.recheios.push(val);
+      } else {
+        cakeSel.recheios = cakeSel.recheios.filter(x=>x!==val);
+      }
+      updateCakePrice();
+    });
+  });
+}
+
+renderRadios(document.getElementById('cakeSizeChoices'), cakeSizes, 'cakeSize', (opt)=>{ cakeSel.size = opt; updateCakePrice(); });
+renderRadios(document.getElementById('cakeMassaChoices'), massas, 'cakeMassa', (opt)=>{ cakeSel.massa = opt; updateCakePrice(); });
+renderCheckRecheios(document.getElementById('cakeRecheioChoices'), recheios);
+renderRadios(document.getElementById('cakeCoberturaChoices'), coberturas, 'cakeCobertura', (opt)=>{ cakeSel.cobertura = opt; updateCakePrice(); });
+document.getElementById('cakeCoberturaChoices').querySelector('input').checked = true;
+cakeSel.cobertura = coberturas[0];
+
+function fmt(n){ return 'R$ ' + n.toLocaleString('pt-BR', {minimumFractionDigits:2, maximumFractionDigits:2}); }
+
+function updateCakePrice(){
+  const line = document.getElementById('cakePriceLine');
+  if(!cakeSel.size){ line.textContent = 'Escolha um tamanho'; return; }
+  let total = cakeSel.size.price;
+  let extra = 0;
+  if(cakeSel.cobertura && cakeSel.cobertura.perKg && cakeSel.size.kg){
+    extra = cakeSel.cobertura.perKg * cakeSel.size.kg;
+    total += extra;
+  }
+  line.textContent = fmt(total) + (extra>0 ? ` (inclui cobertura +${fmt(extra)})` : '');
+}
+
+document.getElementById('addCakeBtn').addEventListener('click', ()=>{
+  if(!cakeSel.size || !cakeSel.massa){
+    alert('Escolha ao menos o tamanho e a massa do bolo antes de adicionar 🍰');
+    return;
+  }
+  const kg = cakeSel.size.kg;
+  const coberturaExtra = (cakeSel.cobertura.perKg && kg) ? cakeSel.cobertura.perKg * kg : 0;
+  const price = cakeSel.size.price + coberturaExtra;
+  const recheioTxt = cakeSel.recheios.length ? cakeSel.recheios.join(', ') : 'a combinar';
+  cart.push({
+    label: `Bolo ${cakeSel.size.label} · massa ${cakeSel.massa} · recheio: ${recheioTxt} · cobertura: ${cakeSel.cobertura.label}`,
+    qty: 1,
+    unit: price,
+    total: price,
+    key: 'cake-'+Date.now()
+  });
+  renderCart();
+  document.getElementById('addCakeBtn').textContent = 'Adicionado ✓';
+  setTimeout(()=> document.getElementById('addCakeBtn').textContent='Adicionar', 1200);
+});
+
+/* ======================= RENDER: GENERIC CATEGORIES ======================= */
+const genericRoot = document.getElementById('genericCats');
+categories.forEach(cat=>{
+  const catEl = document.createElement('div');
+  catEl.className = 'cat';
+  catEl.innerHTML = `
+    <button class="cat-head" data-toggle>${cat.icon} ${cat.title} <span class="chevron">▾</span></button>
+    <div class="cat-body">
+      ${cat.items.map((it,i)=>`
+        <div class="item">
+          <div class="item-info">
+            <div class="item-name">${it.name}</div>
+            <div class="item-meta">mín. ${it.min} ${it.unitLabel}</div>
+            <div class="item-price">${fmt(it.unit)} / ${it.unitLabel.replace(/s$/,'')}</div>
+          </div>
+          <div class="stepper">
+            <button data-dec="${cat.key}-${i}">−</button>
+            <span class="qty" id="qty-${cat.key}-${i}">0</span>
+            <button data-inc="${cat.key}-${i}">+</button>
+          </div>
+        </div>
+      `).join('')}
+    </div>
+  `;
+  genericRoot.appendChild(catEl);
+});
+
+const qtyState = {}; // key -> qty
+
+function itemKey(catKey, idx){ return catKey+'-'+idx; }
+
+genericRoot.addEventListener('click', (e)=>{
+  const incKey = e.target.dataset.inc;
+  const decKey = e.target.dataset.dec;
+  if(incKey){
+    const [catKey, idxStr] = splitKey(incKey);
+    const cat = categories.find(c=>c.key===catKey);
+    const it = cat.items[+idxStr];
+    const cur = qtyState[incKey] || 0;
+    const next = cur === 0 ? it.min : cur + it.step;
+    qtyState[incKey] = next;
+    syncItemToCart(cat, it, incKey);
+  }
+  if(decKey){
+    const [catKey, idxStr] = splitKey(decKey);
+    const cat = categories.find(c=>c.key===catKey);
+    const it = cat.items[+idxStr];
+    const cur = qtyState[decKey] || 0;
+    let next = cur - it.step;
+    if(next < it.min) next = 0;
+    qtyState[decKey] = next;
+    syncItemToCart(cat, it, decKey);
+  }
+});
+
+function splitKey(k){
+  const idx = k.lastIndexOf('-');
+  return [k.slice(0,idx), k.slice(idx+1)];
+}
+
+function syncItemToCart(cat, it, key){
+  document.getElementById('qty-'+key).textContent = qtyState[key] || 0;
+  const qty = qtyState[key] || 0;
+  cart = cart.filter(c => c.key !== key);
+  if(qty > 0){
+    cart.push({
+      label: `${it.name} (${cat.title})`,
+      qty, unit: it.unit, total: qty*it.unit, key
+    });
+  }
+  renderCart();
+}
+
+/* ======================= ACCORDION TOGGLE ======================= */
+document.body.addEventListener('click', (e)=>{
+  if(e.target.matches('[data-toggle]') || e.target.closest('[data-toggle]')){
+    const btn = e.target.closest('[data-toggle]');
+    btn.closest('.cat').classList.toggle('open');
+  }
+});
+
+/* ======================= CART / ORDER BAR ======================= */
+function renderCart(){
+  const totalCount = cart.reduce((s,c)=>s+ (c.qty||1), 0);
+  const totalPrice = cart.reduce((s,c)=>s+c.total, 0);
+  document.getElementById('orderCount').textContent = `${cart.length} ${cart.length===1?'item':'itens'} no pedido`;
+  document.getElementById('orderTotal').textContent = fmt(totalPrice);
+}
+renderCart();
+
+/* ======================= MODAL ======================= */
+// data mínima = hoje + 5 dias
+const dateInput = document.getElementById('custDate');
+const today = new Date();
+const minDate = new Date(today);
+minDate.setDate(today.getDate() + 5);
+dateInput.min = minDate.toISOString().split('T')[0];
+dateInput.addEventListener('change', ()=>{
+  const warn = document.getElementById('dateWarning');
+  if(!dateInput.value){ warn.style.display='none'; return; }
+  const chosen = new Date(dateInput.value + 'T00:00:00');
+  warn.style.display = chosen < minDate ? 'block' : 'none';
+});
+
+function formatDateBR(iso){
+  if(!iso) return '(não informado)';
+  const [y,m,d] = iso.split('-');
+  return `${d}/${m}/${y}`;
+}
+
+const overlay = document.getElementById('modalOverlay');
+document.getElementById('openCheckout').addEventListener('click', ()=>{
+  const linesEl = document.getElementById('modalLines');
+  if(cart.length===0){
+    linesEl.innerHTML = `<div class="empty-msg">Seu pedido está vazio — escolha algo no cardápio acima 🍓</div>`;
+  } else {
+    const total = cart.reduce((s,c)=>s+c.total,0);
+    linesEl.innerHTML = cart.map(c=>`
+      <div class="line"><span>${c.label} ${c.qty>1?`×${c.qty}`:''}</span><span>${fmt(c.total)}</span></div>
+    `).join('') + `<div class="line grand"><span>Total estimado</span><span>${fmt(total)}</span></div>`;
+  }
+  overlay.classList.add('show');
+});
+function closeModal(){ overlay.classList.remove('show'); }
+overlay.addEventListener('click', (e)=>{ if(e.target===overlay) closeModal(); });
+
+document.getElementById('sendWhats').addEventListener('click', ()=>{
+  if(cart.length===0){ alert('Adicione ao menos um item antes de enviar 🙂'); return; }
+  if(dateInput.value){
+    const chosen = new Date(dateInput.value + 'T00:00:00');
+    if(chosen < minDate){
+      document.getElementById('dateWarning').style.display = 'block';
+      dateInput.scrollIntoView({behavior:'smooth', block:'center'});
+      return;
+    }
+  }
+  const name = document.getElementById('custName').value.trim() || '(não informado)';
+  const date = formatDateBR(dateInput.value);
+  const notes = document.getElementById('custNotes').value.trim();
+  const total = cart.reduce((s,c)=>s+c.total,0);
+
+  let msg = `Olá, Amora Sucrée! 🫐 Gostaria de fazer um pedido:\n\n`;
+  cart.forEach(c=>{ msg += `• ${c.label}${c.qty>1?` ×${c.qty}`:''} — ${fmt(c.total)}\n`; });
+  msg += `\nTotal estimado: ${fmt(total)}\n\nNome: ${name}\nData desejada de retirada: ${date}\n`;
+  if(notes) msg += `Observações: ${notes}\n`;
+  msg += `\n(retirada no local — não fazemos entrega · valores de itens "sob consulta" a confirmar)`;
+
+  const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`;
+  window.open(url, '_blank');
+});
+
+/* ======================= GALERIA / LIGHTBOX ======================= */
+function openLightbox(item){
+  const img = item.querySelector('img');
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightboxImg');
+  lightboxImg.src = img.src;
+  lightboxImg.alt = img.alt;
+  lightbox.classList.add('show');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeLightbox(){
+  const lightbox = document.getElementById('lightbox');
+  lightbox.classList.remove('show');
+  document.body.style.overflow = '';
+}
+
+document.addEventListener('keydown', (e)=>{
+  if(e.key === 'Escape') closeLightbox();
+});
+</script>
+</body>
+</html>
