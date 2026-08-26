@@ -509,7 +509,7 @@
         <label style="font-size:12.5px;font-weight:700;color:var(--plum-mid);margin-top:12px;display:block;">Massa</label>
         <div class="single-choice" id="cakeMassaChoices"></div>
 
-        <label style="font-size:12.5px;font-weight:700;color:var(--plum-mid);margin-top:12px;display:block;">Recheio (inclui até 2 tradicionais)</label>
+        <label style="font-size:12.5px;font-weight:700;color:var(--plum-mid);margin-top:12px;display:block;">Recheio (escolha o tamanho primeiro — a quantidade inclusa varia por tamanho: 3 recheios nos bolos de 10cm de altura, 4 nos de 15cm)</label>
         <div class="single-choice" id="cakeRecheioChoices"></div>
         <div class="note-box">Quer recheio especial ou premium? Selecione mesmo assim — vai como observação e a Amora Sucrée confirma o acréscimo (R$65 a R$85/kg).</div>
 
@@ -535,7 +535,7 @@
     <div class="tape-label">Cardápio completo</div>
 
     <h3 style="margin-bottom:8px;">Massas</h3>
-    <div class="tag-list"><span class="tag">Baunilha</span><span class="tag">Cenoura</span><span class="tag">Chocolate</span></div>
+    <div class="tag-list"><span class="tag">Baunilha</span><span class="tag">Cenoura</span><span class="tag">Chocolate</span><span class="tag">Chocolate black</span></div>
 
     <h3 style="margin:18px 0 4px;">Recheios tradicionais · R$60/kg</h3>
     <div class="tag-list">
@@ -568,15 +568,14 @@
     <div class="price-line"><span>Morangos</span><span>R$5,00/kg</span></div>
     <div class="price-line"><span>Brigadeiros</span><span>R$1,00/un</span></div>
     <div class="price-line"><span>Pó de decoração</span><span>R$5,00/kg</span></div>
-    <div class="price-line"><span>Griter</span><span>R$8,00/kg</span></div>
 
     <h3 style="margin:18px 0 4px;">Tamanhos gerais (sob consulta de valor)</h3>
     <div class="price-line"><span>Redondo 20cm · 1 / 2 recheios</span><span>1kg / 1,5kg</span></div>
     <div class="price-line"><span>Redondo 23cm · 1 / 2 recheios</span><span>1,5kg / 2kg</span></div>
     <div class="price-line"><span>Redondo 25cm · 1 / 2 recheios</span><span>2kg / 3kg</span></div>
-    <div class="price-line"><span>Retangular 26x18 · 1 / 2 recheios</span><span>1kg / 2kg</span></div>
-    <div class="price-line"><span>Retangular 30x20 · 1 / 2 recheios</span><span>2kg / 3kg</span></div>
-    <div class="price-line"><span>Retangular 38x28 · 1 / 2 recheios</span><span>3kg / 4kg</span></div>
+    <div class="price-line"><span>Retangular 26x18 · 1 / 2 recheios</span><span>1kg / 2,5kg</span></div>
+    <div class="price-line"><span>Retangular 30x20 · 1 / 2 recheios</span><span>2kg / 3,5kg</span></div>
+    <div class="price-line"><span>Retangular 38x28 · 1 / 2 recheios</span><span>3kg / 5kg</span></div>
     <div class="price-line"><span>Retangular 42x31 · 1 / 2 recheios</span><span>4kg / 6kg</span></div>
   </section>
 
@@ -656,16 +655,16 @@ const INSTAGRAM_URL = "https://instagram.com/amorasucreee";
 
 /* ======================= DATA ======================= */
 const cakeSizes = [
-  { id:'a10-15', label:'Redondo alto 10cm · 15cm', kg:1.5, price:95 },
-  { id:'a10-17', label:'Redondo alto 10cm · 17cm', kg:1.8, price:115 },
-  { id:'a10-20', label:'Redondo alto 10cm · 20cm', kg:2.5, price:160 },
-  { id:'a10-23', label:'Redondo alto 10cm · 23cm', kg:3,   price:190 },
-  { id:'a15-17', label:'Redondo alto 15cm · 17cm', kg:2,   price:150 },
-  { id:'a15-20', label:'Redondo alto 15cm · 20cm', kg:3,   price:225 },
-  { id:'andar-20', label:'Bolo de andar · base 20 / topo 15', kg:null, price:300 },
-  { id:'andar-23', label:'Bolo de andar · base 23 / topo 17', kg:null, price:400 },
+  { id:'a10-15', label:'Redondo alto 10cm · 15cm (3 recheios)', kg:1.5, price:105, recheioMax:3 },
+  { id:'a10-17', label:'Redondo alto 10cm · 17cm (3 recheios)', kg:1.8, price:125, recheioMax:3 },
+  { id:'a10-20', label:'Redondo alto 10cm · 20cm (3 recheios)', kg:2.5, price:175, recheioMax:3 },
+  { id:'a10-23', label:'Redondo alto 10cm · 23cm (3 recheios)', kg:3,   price:210, recheioMax:3 },
+  { id:'a15-17', label:'Redondo alto 15cm · 17cm (4 recheios)', kg:2,   price:160, recheioMax:4 },
+  { id:'a15-20', label:'Redondo alto 15cm · 20cm (4 recheios)', kg:3,   price:240, recheioMax:4 },
+  { id:'andar-20', label:'Bolo de andar · base 20 / topo 15 (3 recheios)', kg:4, price:340, recheioMax:3 },
+  { id:'andar-23', label:'Bolo de andar · base 23 / topo 17 (3 recheios)', kg:5, price:420, recheioMax:3 },
 ];
-const massas = ['Baunilha','Cenoura','Chocolate'];
+const massas = ['Baunilha','Cenoura','Chocolate','Chocolate black'];
 const recheios = ['Beijinho','Bicho de pé','Brigadeiro','Brigadeiro branco','Brigadeiro de ninho','Creme c/ morango','Creme c/ abacaxi','Doce de leite','Prestígio','— quero recheio especial/premium (sob consulta)'];
 const coberturas = [
   { id:'chantilly', label:'Chantilly (incluso)', perKg:0 },
@@ -675,36 +674,44 @@ const coberturas = [
 
 const categories = [
   {
-    key:'docinhos', icon:'🍬', title:'Docinhos tradicionais',
+    key:'kits', icon:'🎉', title:'Kits Celebração',
+    note:'Ao escolher um kit, informe no campo de observações: sabor da massa (baunilha ou chocolate), recheio (brigadeiro, beijinho, doce de leite ou prestígio), sabor dos docinhos e tema da decoração.',
     items:[
-      { name:'Cento (10g/un, 2 sabores)', unit:90, min:1, step:1, unitLabel:'cento(s)' },
-      { name:'Cento (15g/un, 3 sabores)', unit:150, min:1, step:1, unitLabel:'cento(s)' },
+      { name:'Kit P · 6 convidados', desc:'Bolo 11cm · 12 docinhos · 6 brownie petit · 6 mini cupcakes', unit:100, min:1, step:1, unitLabel:'kit' },
+      { name:'Kit M · 12 convidados', desc:'Bolo 15cm (2 recheios) · 25 docinhos (2 sabores) · 12 brownie petit · 12 mini cupcakes', unit:225, min:1, step:1, unitLabel:'kit' },
+      { name:'Kit G · 24 convidados', desc:'Bolo 20cm (2 recheios) · 50 docinhos (2 sabores) · 24 brownie petit · 24 mini cupcakes', unit:390, min:1, step:1, unitLabel:'kit' },
     ]
   },
   {
-    key:'brigEspeciais', icon:'🍫', title:'Brigadeiros especiais (cento)',
-    items:[ { name:'Café, Casadinho, Limão, Maracujá, Ninho e outros', unit:145, min:1, step:1, unitLabel:'cento(s)' } ]
+    key:'docinhos', icon:'🍬', title:'Docinhos tradicionais',
+    items:[
+      { name:'Cento (10g/un, 2 sabores)', unit:95, min:1, step:1, unitLabel:'cento(s)' },
+      { name:'Cento (15g/un, 3 sabores)', unit:140, min:1, step:1, unitLabel:'cento(s)' },
+    ]
   },
   {
-    key:'brigPremium', icon:'✨', title:'Brigadeiros premium (cento)',
-    items:[ { name:'Branco, Caramelo, Ferrero Rocher e outros', unit:170, min:1, step:1, unitLabel:'cento(s)' } ]
+    key:'brigEspeciais', icon:'🍫', title:'Brigadeiros especiais',
+    items:[
+      { name:'Cento 10g/un, 2 sabores', desc:'Café, Casadinho, Coco queimado, Limão e outros', unit:110, min:1, step:1, unitLabel:'cento(s)' },
+      { name:'Cento 15g/un, 3 sabores', desc:'Café, Casadinho, Coco queimado, Limão e outros', unit:160, min:1, step:1, unitLabel:'cento(s)' },
+    ]
+  },
+  {
+    key:'brigPremium', icon:'✨', title:'Brigadeiros premium',
+    items:[
+      { name:'Cento 10g/un, 2 sabores', desc:'Branco, Charge, Churros, Ferrero Rocher e outros', unit:130, min:1, step:1, unitLabel:'cento(s)' },
+      { name:'Cento 15g/un, 3 sabores', desc:'Branco, Charge, Churros, Ferrero Rocher e outros', unit:190, min:1, step:1, unitLabel:'cento(s)' },
+    ]
   },
   {
     key:'brigModelados', icon:'🎀', title:'Brigadeiros modelados (mín. 25 un)',
-    items:[ { name:'Coração, flor, letras, temas — 15g', unit:1.8, min:25, step:1, unitLabel:'un' } ]
-  },
-  {
-    key:'brigPistache', icon:'🌰', title:'Brigadeiro de pistache (mín. 25 un)',
-    items:[
-      { name:'Com confeito', unit:2.5, min:25, step:1, unitLabel:'un' },
-      { name:'Com pistache triturado', unit:3.0, min:25, step:1, unitLabel:'un' },
-    ]
+    items:[ { name:'15g — coração, flor, letras, turma da mônica ou natalino', desc:'Sabores: branco, chocolate, morango ou ninho', unit:1.8, min:25, step:1, unitLabel:'un' } ]
   },
   {
     key:'cupcakes', icon:'🧁', title:'Cupcakes',
     items:[
-      { name:'Mini cupcake (mín. 24 un)', unit:3, min:24, step:1, unitLabel:'un' },
-      { name:'Cupcake (mín. 12 un)', unit:6, min:12, step:1, unitLabel:'un' },
+      { name:'Mini cupcake (mín. 24 un)', unit:3.5, min:24, step:1, unitLabel:'un' },
+      { name:'Cupcake (mín. 12 un)', unit:7, min:12, step:1, unitLabel:'un' },
     ]
   },
   {
@@ -724,17 +731,6 @@ const categories = [
       { name:'Bem-casados (mín. 20 un)', unit:4, min:20, step:1, unitLabel:'un' },
       { name:'Brownies (mín. 15 un)', unit:4.5, min:15, step:1, unitLabel:'un' },
       { name:'Mini pão de mel (mín. 12 un)', unit:4, min:12, step:1, unitLabel:'un' },
-    ]
-  },
-  {
-    key:'placa', icon:'🏷️', title:'Placa de bolo',
-    items:[
-      { name:'32x22 · Baunilha', unit:26, min:1, step:1, unitLabel:'un' },
-      { name:'32x22 · Chocolate', unit:32, min:1, step:1, unitLabel:'un' },
-      { name:'40x28 · Baunilha', unit:39, min:1, step:1, unitLabel:'un' },
-      { name:'40x28 · Chocolate', unit:44, min:1, step:1, unitLabel:'un' },
-      { name:'44x31 · Baunilha', unit:52, min:1, step:1, unitLabel:'un' },
-      { name:'44x31 · Chocolate', unit:64, min:1, step:1, unitLabel:'un' },
     ]
   },
 ];
@@ -767,8 +763,13 @@ function renderCheckRecheios(container, list){
   container.querySelectorAll('input').forEach(inp=>{
     inp.addEventListener('change', ()=>{
       const val = list[+inp.dataset.r];
+      const max = cakeSel.size ? cakeSel.size.recheioMax : 2;
       if(inp.checked){
-        if(cakeSel.recheios.length>=2){ inp.checked=false; return; }
+        if(cakeSel.recheios.length>=max){
+          inp.checked=false;
+          alert(`Esse tamanho inclui até ${max} recheios. Desmarque um sabor antes de escolher outro 🍰`);
+          return;
+        }
         cakeSel.recheios.push(val);
       } else {
         cakeSel.recheios = cakeSel.recheios.filter(x=>x!==val);
@@ -828,11 +829,12 @@ categories.forEach(cat=>{
   catEl.innerHTML = `
     <button class="cat-head" data-toggle>${cat.icon} ${cat.title} <span class="chevron">▾</span></button>
     <div class="cat-body">
+      ${cat.note ? `<div class="note-box">${cat.note}</div>` : ''}
       ${cat.items.map((it,i)=>`
         <div class="item">
           <div class="item-info">
             <div class="item-name">${it.name}</div>
-            <div class="item-meta">mín. ${it.min} ${it.unitLabel}</div>
+            <div class="item-meta">${it.desc ? it.desc : `mín. ${it.min} ${it.unitLabel}`}</div>
             <div class="item-price">${fmt(it.unit)} / ${it.unitLabel.replace(/s$/,'')}</div>
           </div>
           <div class="stepper">
